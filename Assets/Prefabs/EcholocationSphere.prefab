@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 3456074446339268481}
   - component: {fileID: 8571653326150081728}
   - component: {fileID: -6246387673698326359}
-  m_Layer: 0
+  - component: {fileID: 8335973339562461258}
+  m_Layer: 6
   m_Name: EcholocationSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d1c4bb66b57b46649b98e2b08ddc45ab, type: 2}
+  - {fileID: 2100000, guid: 90427bd18cc097c4d89ea90d8de61cdb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -133,3 +134,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &8335973339562461258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6508296677511163162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c9fd85961a612f48bf3cf4d6712339f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
