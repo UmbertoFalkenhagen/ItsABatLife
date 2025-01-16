@@ -5,6 +5,7 @@ public class ProceduralMaze : MonoBehaviour
     public int width = 10;
     public int height = 10;
     public GameObject wallPrefab; // Prefab for the wall segments
+    public Material mat;
     public float wallSize = 1f;
 
     private int[,] maze;
