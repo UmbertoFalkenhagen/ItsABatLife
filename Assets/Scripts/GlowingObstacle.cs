@@ -3,14 +3,15 @@ using UnityEngine;
 public class GlowingObstacle : MonoBehaviour
 {
     [Header("Glow Settings")]
-    public float glowIncreaseFactor = 0.2f;        // Amount to increase glow per hit
-    public float maxGlowIntensity = 5f;            // Maximum emission intensity
-    public float glowDecreaseRate = 0.5f;          // Rate at which the glow decreases over time
-    public float glowDelay = 1.5f;                 // Delay before dimming starts
+    public float glowIncreaseFactor = 0.2f;      // Amount to increase glow per hit
+    public float maxGlowIntensity = 5f;         // Maximum emission intensity
+    public float glowDecreaseRate = 0.5f;       // Rate at which the glow decreases over time
+    public float glowDelay = 1.5f;              // Delay before dimming starts
 
     private Material obstacleMaterial;
-    private float currentGlowIntensity = 0f;       // Current emission intensity
-    private float timeSinceLastHit = 0f;           // Timer to track delay
+    private float currentGlowIntensity = 0f;    // Current emission intensity
+    private float timeSinceLastHit = 0f;        // Timer to track glow decay delay
+    private Color baseEmissionColor;            // Stores the object's original emission color
 
     void Start()
     {
@@ -19,7 +20,12 @@ public class GlowingObstacle : MonoBehaviour
         {
             obstacleMaterial = renderer.material;
             obstacleMaterial.EnableKeyword("_EMISSION");
-            obstacleMaterial.SetColor("_EmissionColor", Color.black);  // Start with no glow
+
+            // Get the base emission color of the object's material
+            baseEmissionColor = obstacleMaterial.GetColor("_EmissionColor");
+
+            // Ensure object starts with NO glow (completely dark)
+            obstacleMaterial.SetColor("_EmissionColor", Color.black);
         }
         else
         {
@@ -38,8 +44,8 @@ public class GlowingObstacle : MonoBehaviour
             currentGlowIntensity -= glowDecreaseRate * Time.deltaTime;
             currentGlowIntensity = Mathf.Max(currentGlowIntensity, 0f);
 
-            Color emissionColor = Color.white * currentGlowIntensity;
-            obstacleMaterial.SetColor("_EmissionColor", emissionColor);
+            // Apply the object's original emission color multiplied by the intensity
+            obstacleMaterial.SetColor("_EmissionColor", baseEmissionColor * currentGlowIntensity);
         }
     }
 
@@ -49,9 +55,8 @@ public class GlowingObstacle : MonoBehaviour
         currentGlowIntensity += sphereSize * glowIncreaseFactor;
         currentGlowIntensity = Mathf.Min(currentGlowIntensity, maxGlowIntensity);
 
-        // Update the material's emission color
-        Color emissionColor = Color.white * currentGlowIntensity;
-        obstacleMaterial.SetColor("_EmissionColor", emissionColor);
+        // Apply the object's original emission color multiplied by the new intensity
+        obstacleMaterial.SetColor("_EmissionColor", baseEmissionColor * currentGlowIntensity);
 
         // Reset the delay timer
         timeSinceLastHit = 0f;

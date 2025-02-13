@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ObstacleGlowMat
+  m_Name: CollectibleMat
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -79,6 +79,6 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.114587024, g: 0.4167632, b: 0.9716981, a: 1}
-    - _EmissionColor: {r: 0.029289216, g: 0.023868995, b: 0.00036764765, a: 1}
+    - _Color: {r: 1, g: 0.9890636, b: 0.0039215684, a: 1}
+    - _EmissionColor: {r: 1, g: 0.9734455, b: 0.000303527, a: 1}
   m_BuildTextureStacks: []
